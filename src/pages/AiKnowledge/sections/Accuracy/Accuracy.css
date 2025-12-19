@@ -1,0 +1,26 @@
+.config-add textarea {
+  width: 100%;
+  resize: vertical;  /* optional: only vertical resize */
+}
+
+.config-add input {
+  max-width: 20%;   /* adjust as you like */
+  min-width: 90px;
+  width: 100%;
+  resize: vertical;  /* optional: only vertical resize */
+}
+
+.config-add {
+  display: flex;
+  gap: 10px;
+}
+
+.config-add textarea {
+  flex: 1;
+  max-width: 62%;
+  min-width: 250px;
+}
+
+.primary{
+    max-height: 35px;
+}

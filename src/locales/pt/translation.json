@@ -1,0 +1,16 @@
+{
+  "login": {
+    "pt": "Bem-vindo ao Painel Next Stock",
+    "emailPlaceholder": "seu@email.com",
+    "continue": "Continuar →",
+    "codeMessage": "Digite o código enviado para {{email}}",
+    "codePlaceholder": "XXXXXX"
+  },
+  "assistant": {
+    "title": "Portal",
+    "welcome": "Olá! Sou o assistente de IA do Thiago. Pergunte sobre experiências, projetos ou habilidades.",
+    "placeholder": "Pergunte algo sobre o Thiago…",
+    "thinking": "Pensando…",
+    "error": "Ops! Algo deu errado. Tente novamente."
+  }
+}

@@ -1,0 +1,177 @@
+/* ---------------- ROOT ---------------- */
+
+.users-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+/* ---------------- USER CARD ---------------- */
+
+.user-card {
+  background: #f5f5f7;
+  border-radius: 14px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ---------------- MAIN INFO ---------------- */
+
+.user-main {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.user-main strong {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111;
+}
+
+.user-main span {
+  font-size: 13px;
+  color: #666;
+  word-break: break-all;
+}
+
+/* ---------------- META INFO ---------------- */
+
+.user-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  font-size: 12px;
+  color: #444;
+}
+
+.user-meta span {
+  background: #ffffff;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid #e1e1e6;
+}
+
+/* ---------------- SEGMENTED CONTROL ---------------- */
+
+.segmented-control {
+  display: inline-flex;
+  background: #f1f1f4;
+  border-radius: 12px;
+  padding: 4px;
+  gap: 4px;
+  margin-bottom: 14px;
+}
+
+.segmented-control button {
+  padding: 6px 14px;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  font-size: 13px;
+  cursor: pointer;
+  color: #555;
+  transition: all 0.15s ease;
+}
+
+.segmented-control button:hover {
+  background: #e6e6eb;
+}
+
+.segmented-control button.active {
+  background: #000;
+  color: #fff;
+}
+
+/* ---------------- EMPTY STATE ---------------- */
+
+.config-empty {
+  font-size: 13px;
+  color: #777;
+  margin-top: 12px;
+}
+
+
+.user-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.edit-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  opacity: 0.6;
+}
+
+.edit-btn:hover {
+  opacity: 1;
+}
+
+.user-edit-panel {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed #ddd;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.user-edit-panel select {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 10px;
+}
+
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal input {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.expire-tag {
+  margin-left: 8px;
+  padding: 2px 6px;
+  font-size: 11px;
+  border-radius: 6px;
+  background: rgba(255, 0, 0, 0.075);
+  color: #b00020bb;
+  font-weight: 600;
+}
