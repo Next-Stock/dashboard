@@ -100,3 +100,45 @@
   right: 12px;
   z-index: 10;
 }
+
+.save-transcript-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.save-transcript-btn {
+  min-width: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.save-hint {
+  font-size: 12px;
+  color: #666;
+  margin-left: 2px;
+}
+
+.spinner.small {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spinner-rotate 0.7s linear infinite;
+}
+
+@keyframes spinner-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}

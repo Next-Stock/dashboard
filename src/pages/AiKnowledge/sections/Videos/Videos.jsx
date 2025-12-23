@@ -21,6 +21,8 @@ export default function Videos({ userId, email }) {
   const [showAllVideos, setShowAllVideos] = useState(false);
   const [view, setView] = useState("videos"); // videos | transcripts
 
+  const [isSavingTranscript, setIsSavingTranscript] = useState(false);
+
   const visibleVideos = showAllVideos
     ? videos
     : videos.slice(0, 3);
@@ -66,11 +68,14 @@ export default function Videos({ userId, email }) {
 
   async function handleAddTranscript() {
     try {
+      setIsSavingTranscript(true);
       await addTranscript({ userId, email, transcript });
       setTranscript("");
       load();
     } catch (e) {
       setAlert({ type: "error", message: e.message });
+    } finally {
+      setIsSavingTranscript(false);
     }
   }
 
@@ -133,6 +138,8 @@ export default function Videos({ userId, email }) {
         </div>
       )}
 
+
+
       {/* ADD TRANSCRIPT */}
       {canEdit && view === "transcripts" && (
         <div className="config-add">
@@ -141,16 +148,34 @@ export default function Videos({ userId, email }) {
             value={transcript}
             onChange={e => setTranscript(e.target.value)}
             rows={4}
+            disabled={isSavingTranscript}
           />
-          <button
-            className="apple-btn primary"
-            onClick={handleAddTranscript}
-            disabled={!transcript}
-          >
-            Save Transcript
-          </button>
+
+          <div className="save-transcript-actions">
+            <button
+              className="apple-btn primary save-transcript-btn"
+              onClick={handleAddTranscript}
+              disabled={!transcript || isSavingTranscript}
+            >
+              {isSavingTranscript ? (
+                <span className="btn-loading">
+                  <span className="spinner small" />
+                </span>
+              ) : (
+                "Save Transcript"
+              )}
+            </button>
+
+            {isSavingTranscript && (
+              <div className="save-hint">
+                Please wait... It may take a few seconds.
+              </div>
+            )}
+          </div>
         </div>
       )}
+
+
 
       {/* VIDEOS */}
       {view === "videos" && (
