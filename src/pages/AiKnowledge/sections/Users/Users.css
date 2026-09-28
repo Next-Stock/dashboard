@@ -128,6 +128,34 @@
   border: 1px solid #ccc;
 }
 
+.user-id-readonly {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 9px 10px;
+  border: 1px solid #e2e4e8;
+  border-radius: 8px;
+  background: #f7f8fa;
+}
+
+.user-id-label {
+  flex: 0 0 auto;
+  font-size: 11px;
+  font-weight: 700;
+  color: #60646c;
+}
+
+.user-id-value {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 11px;
+  color: #202124;
+  user-select: text;
+}
+
 .edit-actions {
   display: flex;
   gap: 10px;
@@ -174,4 +202,1185 @@
   background: rgba(255, 0, 0, 0.075);
   color: #b00020bb;
   font-weight: 600;
+}
+
+/* ---------------- TRIAL OVERVIEW ---------------- */
+
+.trial-dashboard {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.trial-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.trial-summary-card {
+  min-height: 118px;
+  padding: 18px 20px;
+  border: 1px solid #e5e5ea;
+  border-radius: 16px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.trial-summary-card.active {
+  background: linear-gradient(135deg, #f7fff9 0%, #ffffff 72%);
+}
+
+.trial-summary-card.ended {
+  background: linear-gradient(135deg, #fff8f8 0%, #ffffff 72%);
+}
+
+.trial-summary-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #555;
+}
+
+.trial-summary-card strong {
+  font-size: 32px;
+  line-height: 1.05;
+  color: #111;
+}
+
+.trial-summary-card small {
+  font-size: 12px;
+  color: #777;
+}
+
+.trial-section {
+  border: 1px solid #e5e5ea;
+  border-radius: 16px;
+  padding: 18px;
+  background: #fff;
+}
+
+.trial-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #ededf0;
+}
+
+.trial-section-header h4 {
+  margin: 0 0 3px;
+  font-size: 16px;
+  color: #111;
+}
+
+.trial-section-header p {
+  margin: 0;
+  font-size: 12px;
+  color: #777;
+}
+
+.trial-count {
+  min-width: 34px;
+  height: 34px;
+  padding: 0 10px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.trial-count.active {
+  background: #eaf8ee;
+  color: #20743a;
+}
+
+.trial-count.ended {
+  background: #fff0f1;
+  color: #a82936;
+}
+
+.trial-users-list {
+  margin-top: 14px;
+}
+
+.user-title {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-width: 0;
+}
+
+.user-email {
+  font-weight: 300;
+  color: #333;
+  word-break: break-all;
+}
+
+.trial-date-chip {
+  font-weight: 500;
+}
+
+.trial-empty {
+  padding: 22px 14px;
+  border-radius: 12px;
+  background: #f7f7f9;
+  text-align: center;
+  font-size: 13px;
+  color: #777;
+}
+
+@media (max-width: 700px) {
+  .trial-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .trial-section {
+    padding: 14px;
+  }
+
+  .trial-section-header {
+    align-items: flex-start;
+  }
+
+  .user-header {
+    gap: 10px;
+  }
+}
+
+/* ---------------- SPLIT / COLLAPSIBLE USER LISTS ---------------- */
+
+.split-users-layout {
+  --secondary-width: 88px;
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--secondary-width);
+  gap: 14px;
+  align-items: start;
+  transition: grid-template-columns 0.42s cubic-bezier(.2,.8,.2,1), gap 0.3s ease;
+}
+
+.split-users-layout.secondary-open {
+  --secondary-width: min(43%, 520px);
+}
+
+.split-users-panel {
+  min-width: 0;
+  border: 1px solid #e5e5ea;
+  border-radius: 16px;
+  background: #fff;
+  overflow: visible;
+  transition: box-shadow 0.3s ease, transform 0.35s ease;
+}
+
+.split-users-panel:hover {
+  box-shadow: 0 10px 28px rgba(0,0,0,0.045);
+}
+
+.primary-panel {
+  padding: 0 18px 18px;
+}
+
+.sticky-list-header {
+  position: sticky;
+  top: 8px;
+  z-index: 12;
+}
+
+.split-panel-header {
+  margin: 0 -18px;
+  min-height: 76px;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  border-bottom: 1px solid #ededf0;
+  border-radius: 16px 16px 0 0;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.split-panel-header h4 {
+  margin: 0 0 3px;
+  font-size: 16px;
+}
+
+.split-panel-header p {
+  margin: 0;
+  font-size: 12px;
+  color: #777;
+}
+
+.secondary-panel {
+  position: relative;
+  overflow: visible;
+  transition: width 0.4s ease, transform 0.4s cubic-bezier(.2,.8,.2,1);
+}
+
+.secondary-panel-toggle {
+  width: 100%;
+  min-height: 72px;
+  padding: 14px 12px;
+  border: 0;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  text-align: left;
+  background: linear-gradient(135deg, #fff1f2 0%, #fff8f8 52%, #ffffff 100%);
+  color: #7f1d2d;
+  box-shadow: inset 0 0 0 1px rgba(168,41,54,.08);
+  transition: transform .25s ease, box-shadow .25s ease, background .3s ease;
+}
+
+.secondary-panel-toggle:hover {
+  background: linear-gradient(135deg, #ffe8eb 0%, #fff5f6 58%, #ffffff 100%);
+  box-shadow: inset 0 0 0 1px rgba(168,41,54,.14), 0 8px 24px rgba(168,41,54,.08);
+}
+
+.toggle-icon {
+  flex: 0 0 30px;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,.82);
+  transition: transform .4s cubic-bezier(.2,.8,.2,1);
+}
+
+.secondary-open .toggle-icon {
+  transform: translateX(1px);
+}
+
+.toggle-copy {
+  min-width: 0;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+  opacity: 0;
+  transform: translateX(12px);
+  white-space: nowrap;
+  overflow: hidden;
+  transition: opacity .22s ease, transform .38s cubic-bezier(.2,.8,.2,1);
+}
+
+.toggle-copy strong {
+  font-size: 15px;
+  color: #8f2432;
+}
+
+.toggle-copy small {
+  font-size: 11px;
+  color: #a85a63;
+}
+
+.secondary-panel-toggle .trial-count {
+  opacity: 0;
+  transform: scale(.85);
+  transition: opacity .2s ease, transform .3s ease;
+}
+
+.secondary-open .toggle-copy,
+.secondary-open .secondary-panel-toggle .trial-count {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+.secondary-panel-content {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0 14px;
+  transform: translateX(18px);
+  transition: max-height .55s cubic-bezier(.2,.8,.2,1), opacity .28s ease, transform .42s cubic-bezier(.2,.8,.2,1), padding .35s ease;
+}
+
+.secondary-open .secondary-panel-content {
+  max-height: 20000px;
+  opacity: 1;
+  overflow: visible;
+  padding: 0 14px 14px;
+  transform: translateX(0);
+}
+
+.split-users-list {
+  margin-top: 14px;
+}
+
+.expired-premium-note {
+  margin: 14px 2px 2px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #fff7f7;
+  color: #8f4a52;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+@media (max-width: 850px) {
+  .split-users-layout,
+  .split-users-layout.secondary-open {
+    --secondary-width: 1fr;
+    grid-template-columns: 1fr;
+  }
+
+  .secondary-panel {
+    order: 2;
+  }
+
+  .toggle-copy,
+  .secondary-panel-toggle .trial-count {
+    opacity: 1;
+    transform: none;
+  }
+
+  .secondary-panel-content {
+    transform: translateY(-8px);
+  }
+
+  .secondary-open .secondary-panel-content {
+    transform: translateY(0);
+  }
+
+  .sticky-list-header {
+    top: 6px;
+  }
+}
+
+/* ---------------- SPLIT LIST REFINEMENTS ---------------- */
+.sticky-list-header {
+  top: 0;
+}
+
+.secondary-panel-toggle.sticky-list-header {
+  position: sticky;
+  top: 0;
+  z-index: 14;
+}
+
+/* Keep the collapsed rail informative instead of reducing it to an icon. */
+.split-users-layout:not(.secondary-open) .secondary-panel-toggle {
+  min-height: 154px;
+  padding: 14px 8px;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.split-users-layout:not(.secondary-open) .toggle-copy {
+  width: 100%;
+  opacity: 1;
+  transform: none;
+  white-space: normal;
+  overflow: visible;
+  align-items: center;
+}
+
+.split-users-layout:not(.secondary-open) .toggle-copy strong {
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.split-users-layout:not(.secondary-open) .toggle-copy small {
+  display: none;
+}
+
+.split-users-layout:not(.secondary-open) .secondary-panel-toggle .trial-count {
+  opacity: 1;
+  transform: none;
+  min-width: 30px;
+  height: 30px;
+}
+
+/* trial-dashboard already supplies spacing; avoid doubling it around split lists. */
+.trial-dashboard > .split-users-layout {
+  margin-top: 0;
+}
+
+@media (max-width: 850px) {
+  .sticky-list-header,
+  .secondary-panel-toggle.sticky-list-header {
+    top: 0;
+  }
+
+  .split-users-layout:not(.secondary-open) .secondary-panel-toggle {
+    min-height: 72px;
+    padding: 12px 14px;
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .split-users-layout:not(.secondary-open) .toggle-copy {
+    align-items: flex-start;
+  }
+
+  .split-users-layout:not(.secondary-open) .toggle-copy strong {
+    font-size: 15px;
+  }
+
+  .split-users-layout:not(.secondary-open) .toggle-copy small {
+    display: block;
+  }
+
+  .split-users-layout:not(.secondary-open) .secondary-panel-toggle .trial-count {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 520px) {
+  .trial-summary-card {
+    min-height: 104px;
+    padding: 15px 16px;
+  }
+
+  .trial-summary-card strong {
+    font-size: 28px;
+  }
+
+  .primary-panel {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .split-panel-header {
+    margin-left: -12px;
+    margin-right: -12px;
+    padding: 14px 12px;
+  }
+}
+
+/* ---------------- POLISHED TRIAL / PREMIUM EXPERIENCE ---------------- */
+
+/* Summary cards: stronger labels + very subtle ambient gradient motion. */
+.trial-summary-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  box-shadow: 0 8px 28px rgba(18, 24, 40, 0.025);
+  transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease, border-color .35s ease;
+}
+
+.trial-summary-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(18, 24, 40, 0.055);
+  border-color: #dcdce3;
+}
+
+.trial-summary-label {
+  position: relative;
+  z-index: 2;
+  font-weight: 700;
+  color: #303038;
+}
+
+.trial-summary-card strong,
+.trial-summary-card small {
+  position: relative;
+  z-index: 2;
+}
+
+/* Both columns occupy the same grid row height. This gives the collapsed
+   secondary rail enough height for its sticky control to remain visible. */
+.split-users-layout {
+  align-items: stretch;
+}
+
+/* When opened, the secondary list aligns exactly with the 50/50 summary cards. */
+.split-users-layout.secondary-open {
+  --secondary-width: minmax(0, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.secondary-panel {
+  align-self: stretch;
+  min-height: 100%;
+}
+
+
+.active-trial-header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.trial-sort-control {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  color: #6f7078;
+  white-space: nowrap;
+}
+
+.trial-sort-control select {
+  height: 34px;
+  min-width: 142px;
+  padding: 0 30px 0 11px;
+  border: 1px solid #dedee5;
+  border-radius: 10px;
+  background: #fff;
+  color: #292a31;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.trial-sort-control select:hover {
+  border-color: #c9cad3;
+  background: #fafafa;
+}
+
+.trial-sort-control select:focus {
+  border-color: #aaaab5;
+  box-shadow: 0 0 0 3px rgba(20, 20, 30, .055);
+}
+
+/* Sticky list controls use the same geometry so they look like one system
+   while the page is scrolled. */
+.sticky-list-header,
+.secondary-panel-toggle.sticky-list-header {
+  top: 0;
+}
+
+.split-panel-header.sticky-list-header {
+  border-radius: 15px;
+  box-shadow: 0 1px 0 rgba(20, 20, 30, .045);
+}
+
+.secondary-panel-toggle.sticky-list-header {
+  box-shadow: inset 0 0 0 1px rgba(168,41,54,.08), 0 1px 0 rgba(20,20,30,.035);
+}
+
+/* Once expanded, make the red header match the Active header height and shape. */
+.split-users-layout.secondary-open .secondary-panel-toggle {
+  min-height: 76px;
+  padding: 14px 14px;
+  border-radius: 15px;
+}
+
+/* A little more refinement to the opening motion. */
+.secondary-panel-content {
+  transition: max-height .6s cubic-bezier(.16,1,.3,1), opacity .3s ease,
+              transform .5s cubic-bezier(.16,1,.3,1), padding .4s ease;
+}
+
+@media (max-width: 850px) {
+  .split-users-layout.secondary-open {
+    grid-template-columns: 1fr;
+  }
+
+  .secondary-panel {
+    min-height: auto;
+  }
+
+}
+
+@media (max-width: 620px) {
+  .split-panel-header {
+    align-items: flex-start;
+  }
+
+  .active-trial-header-actions {
+    gap: 8px;
+  }
+
+  .trial-sort-control span {
+    display: none;
+  }
+
+  .trial-sort-control select {
+    min-width: 124px;
+    max-width: 38vw;
+    height: 32px;
+    padding-left: 9px;
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trial-summary-card,
+  .secondary-panel-content,
+  .split-users-layout {
+    animation: none !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+
+/* Collapsed secondary rail: remove the outer container border so only the
+   compact sticky control remains visible. Applies to Trial and Premium. */
+.split-users-layout:not(.secondary-open) .secondary-panel {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.split-users-layout:not(.secondary-open) .secondary-panel:hover {
+  box-shadow: none;
+}
+
+
+/* Sort controls for expanded Ended Trial / Expired Premium panels */
+.secondary-sort-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 12px 2px 0;
+}
+
+.secondary-sort-row + .split-users-list {
+  margin-top: 10px;
+}
+
+@media (max-width: 620px) {
+  .secondary-sort-row {
+    justify-content: stretch;
+  }
+
+  .secondary-sort-row .trial-sort-control {
+    width: 100%;
+  }
+
+  .secondary-sort-row .trial-sort-control select {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+/* Secondary-list sort belongs visually inside the sticky header. */
+.secondary-panel {
+  position: relative;
+}
+
+.secondary-header-sort {
+  position: sticky;
+  top: 0;
+  z-index: 13;
+  float: right;
+  width: max-content;
+  height: 76px;
+  margin-top: -76px;
+  margin-right: 64px;
+  display: flex;
+  align-items: center;
+  pointer-events: auto;
+}
+
+/* Keep the toggle copy clear of the inline sort control. */
+.split-users-layout.secondary-open .secondary-panel-toggle {
+  padding-right: 250px;
+}
+
+@media (max-width: 1050px) {
+  .secondary-header-sort span { display: none; }
+  .secondary-header-sort { margin-right: 60px; }
+  .split-users-layout.secondary-open .secondary-panel-toggle { padding-right: 215px; }
+}
+
+@media (max-width: 620px) {
+  .secondary-header-sort {
+    position: relative;
+    top: auto;
+    float: none;
+    width: 100%;
+    height: auto;
+    margin: 8px 0 0;
+    padding: 0 12px 10px;
+  }
+  .secondary-header-sort .trial-sort-control,
+  .secondary-header-sort select { width: 100%; max-width: none; }
+  .split-users-layout.secondary-open .secondary-panel-toggle { padding-right: 14px; }
+}
+
+/* Expanded secondary headers: title, sort and count share one real header row. */
+.secondary-expanded-header {
+  position: sticky;
+  top: 0;
+  z-index: 14;
+  min-height: 76px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border: 1px solid rgba(168, 41, 54, .20);
+  border-radius: 15px;
+  background: linear-gradient(105deg, rgba(255,246,247,.98), rgba(255,252,252,.98));
+  box-shadow: 0 1px 0 rgba(20,20,30,.035);
+}
+
+.secondary-expanded-title {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #a82936;
+  text-align: left;
+  cursor: pointer;
+}
+
+.secondary-expanded-title .toggle-copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.secondary-expanded-title .toggle-copy strong { color: #a82936; }
+.secondary-expanded-title .toggle-copy small { color: #a82936; opacity: .88; }
+
+.secondary-inline-sort {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.secondary-expanded-header > .trial-count { flex: 0 0 auto; }
+
+/* Old overlay implementation is intentionally disabled. */
+.secondary-header-sort { display: none !important; }
+
+@media (max-width: 720px) {
+  .split-panel-header { min-height: auto; }
+
+  .secondary-expanded-header {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 9px;
+  }
+  .secondary-inline-sort {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    width: 100%;
+  }
+  .secondary-inline-sort select {
+    width: 100%;
+    max-width: none;
+  }
+  .secondary-expanded-header > .trial-count {
+    grid-column: 2;
+    grid-row: 1;
+  }
+}
+
+@media (max-width: 430px) {
+  .secondary-inline-sort span { display: none; }
+}
+
+/* ---------------- RESPONSIVE SPLIT-LIST HARDENING ----------------
+   Prevent Trial / Premium / Club headers from being squeezed between
+   the title, sort control and count before the mobile layout takes over. */
+@media (max-width: 1500px) {
+  .split-users-layout,
+  .split-users-layout.secondary-open {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .primary-panel,
+  .secondary-panel {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .secondary-panel {
+    order: 2;
+    min-height: auto;
+  }
+
+  .split-users-layout:not(.secondary-open) .secondary-panel-toggle {
+    min-height: 72px;
+    padding: 12px 16px;
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .split-users-layout:not(.secondary-open) .toggle-copy {
+    width: auto;
+    min-width: 0;
+    flex: 1 1 auto;
+    align-items: flex-start;
+  }
+
+  .split-users-layout:not(.secondary-open) .toggle-copy strong {
+    font-size: 15px;
+  }
+
+  .split-users-layout:not(.secondary-open) .toggle-copy small {
+    display: block;
+  }
+
+  .split-users-layout:not(.secondary-open) .secondary-panel-toggle .trial-count {
+    margin-left: auto;
+    flex: 0 0 auto;
+  }
+
+  .secondary-expanded-header {
+    width: 100%;
+    grid-template-columns: minmax(180px, 1fr) auto auto;
+  }
+
+  .split-panel-header {
+    min-height: 76px;
+  }
+
+  .split-panel-header > div:first-child,
+  .secondary-expanded-title,
+  .secondary-expanded-title .toggle-copy {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .trial-summary-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .split-panel-header {
+    min-height: auto;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .active-trial-header-actions {
+    width: 100%;
+    margin-left: 0;
+    justify-content: space-between;
+  }
+
+  .active-trial-header-actions .trial-sort-control {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .active-trial-header-actions .trial-sort-control select {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+
+  .active-trial-header-actions > .trial-count {
+    flex: 0 0 auto;
+  }
+
+  .secondary-expanded-header {
+    min-height: auto;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px 12px;
+    padding: 12px 14px;
+  }
+
+  .secondary-inline-sort {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  .secondary-inline-sort .trial-sort-control,
+  .secondary-inline-sort select {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+
+  .secondary-expanded-header > .trial-count {
+    grid-column: 2;
+    grid-row: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .primary-panel {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .split-panel-header {
+    margin-left: -10px;
+    margin-right: -10px;
+    padding: 12px;
+  }
+
+  .trial-sort-control span,
+  .secondary-inline-sort span {
+    display: none;
+  }
+
+  .user-card {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .user-title {
+    row-gap: 5px;
+  }
+
+  .user-email {
+    width: 100%;
+  }
+}
+
+/* ---------------- MOBILE CENTERING / WIDTH SAFETY ----------------
+   Keep the Users dashboard centered inside the visible content area on
+   narrow screens and prevent any desktop split-list sizing from leaking in. */
+@media (max-width: 760px) {
+  .trial-dashboard,
+  .trial-summary-grid,
+  .split-users-layout,
+  .split-users-layout.secondary-open,
+  .split-users-panel,
+  .primary-panel,
+  .secondary-panel {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .trial-dashboard,
+  .trial-summary-grid,
+  .split-users-layout,
+  .split-users-layout.secondary-open {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .split-users-layout,
+  .split-users-layout.secondary-open {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) !important;
+    justify-items: stretch;
+    align-items: start;
+    gap: 14px;
+  }
+
+  .primary-panel,
+  .secondary-panel {
+    justify-self: stretch;
+    margin-left: 0;
+    margin-right: 0;
+    transform: none;
+  }
+
+  .primary-panel {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .split-panel-header {
+    width: auto;
+    max-width: none;
+    margin-left: -12px;
+    margin-right: -12px;
+    box-sizing: border-box;
+  }
+
+  .split-users-list,
+  .users-list {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin-left: 0;
+    margin-right: 0;
+    box-sizing: border-box;
+  }
+
+  .user-card {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .secondary-expanded-header,
+  .secondary-panel-toggle {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 480px) {
+  .primary-panel {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .split-panel-header {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+}
+
+/* ---------------- SHARED CONTAINER ALIGNMENT FIX ----------------
+   Summary cards and list workspace must always use the exact same content width.
+   Important at intermediate widths where width:100% + panel padding previously
+   made the list wider than the overview/search area. */
+.trial-dashboard,
+.trial-summary-grid,
+.split-users-layout,
+.split-users-layout.secondary-open {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin-left: 0;
+  margin-right: 0;
+  box-sizing: border-box;
+}
+
+.split-users-panel,
+.primary-panel,
+.secondary-panel,
+.split-panel-header,
+.secondary-panel-toggle,
+.secondary-expanded-header,
+.secondary-panel-content,
+.split-users-list,
+.users-list,
+.user-card {
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+@media (max-width: 1500px) {
+  .split-users-layout,
+  .split-users-layout.secondary-open {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .primary-panel,
+  .secondary-panel {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    box-sizing: border-box;
+  }
+
+  .split-panel-header,
+  .secondary-expanded-header,
+  .secondary-panel-toggle,
+  .secondary-panel-content {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+
+/* ---------------- FINAL HEADER + USER ROW CONSISTENCY ---------------- */
+/* Active and secondary headers must always share the same geometry. */
+.split-panel-header,
+.secondary-expanded-header,
+.split-users-layout.secondary-open .secondary-panel-toggle {
+  min-height: 82px !important;
+  height: 82px;
+  box-sizing: border-box;
+}
+
+.split-panel-header {
+  align-items: center;
+}
+
+/* Keep name + email + Expired badge on one line. Email yields first. */
+.user-title {
+  width: 100%;
+  flex-wrap: nowrap !important;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.user-title > strong {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 46%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.user-title .user-email {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: normal;
+}
+
+.user-title .expire-tag {
+  flex: 0 0 auto;
+  margin-left: 2px;
+  white-space: nowrap;
+  background: #ffe8eb;
+  border: 1px solid #ffd3d9;
+  color: #bd2f40;
+}
+
+/* Subscription date chips: green while active, red once expired. */
+.user-meta .trial-date-chip.date-active {
+  background: #eaf8ef;
+  border-color: #cfeeda;
+  color: #237a45;
+}
+
+.user-meta .trial-date-chip.date-expired {
+  background: #fff0f2;
+  border-color: #ffd7dc;
+  color: #b62e3d;
+}
+
+/* Trial date remains neutral because it is an end-date indicator, not status. */
+
+@media (max-width: 760px) {
+  .split-panel-header,
+  .secondary-expanded-header,
+  .split-users-layout.secondary-open .secondary-panel-toggle {
+    height: auto;
+    min-height: 82px !important;
+  }
+
+  .user-title > strong {
+    max-width: 42%;
+  }
+}
+
+@media (max-width: 480px) {
+  .user-title {
+    flex-wrap: nowrap !important;
+    row-gap: 0 !important;
+  }
+
+  .user-title > strong {
+    max-width: 38%;
+  }
+
+  .user-email {
+    width: auto !important;
+  }
 }
